@@ -86,10 +86,11 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, index=True)
     password = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, unique=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'User {self.username}, Email {self.email}'
 
 
 class NameForm(FlaskForm):
